@@ -275,6 +275,8 @@
                     let fields = json.matchField;
                     let currentPlayerIndex = json.currentPlayerIndex;
                     let currentPlayer = json.currentPlayer;
+                    let gameFinished = json.gameFinished;
+
                     //console.log("all data: " + e.data)
                     console.log("fields: " + fields)
                     console.log("playerIndex: " + currentPlayerIndex)
@@ -283,6 +285,15 @@
                     ref.updateMatchField(fields);
                     ref.updateView();
                     ref.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
+
+                    console.log("game finished: " + gameFinished)
+                    if(gameFinished === "true"){
+                        if(parseInt(ref.clientPlayerIndex) === ref.currentPlayerIndex){
+                            document.getElementById("infoPlayer").innerHTML = currentPlayer + "! You have won the game!"
+                        }else {
+                            document.getElementById("infoPlayer").innerHTML = "Sorry" + "! You lost :("
+                        }
+                    }
 
 
                 }
