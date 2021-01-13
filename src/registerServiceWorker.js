@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { register } from 'register-service-worker'
 
 if (process.env.NODE_ENV === 'production') {
@@ -29,4 +27,6 @@ if (process.env.NODE_ENV === 'production') {
       console.error('Error during service worker registration:', error)
     }
   })
+} else {
+  console.log('Run in production mode to register service-worker')
 }
